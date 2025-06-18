@@ -29,8 +29,8 @@ app.post('/', (req, res) => {
     });
 
     console.log("<b>Test Merchant Notification</b>");
-    const inputJSON = JSON.stringify(req.body);
-    //const inputJSON = req.body;
+    //const inputJSON = JSON.stringify(req.body);
+    const inputJSON = req.body;
     console.log(inputJSON)
 
     //console.log("\n" + inputJSON + "\n");
@@ -56,6 +56,7 @@ rtD9nKk3hmSjMealJCVjj5DJB8aH+CfR+fv0rW+t5JO8Ra5z2sG9kLA/0aX3ePMk
         const providedSignature = signatureParts[1];
 
         console.log("<b>Verify From Data</b>");
+        console.log("Payload : " + payload);
         console.log("Text : " + textData);
         console.log("Signature : " + providedSignature);
 
