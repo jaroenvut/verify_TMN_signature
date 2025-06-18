@@ -30,7 +30,7 @@ app.post('/', (req, res) => {
 
     console.log("<b>Test Merchant Notification</b>");
     //const inputJSON = JSON.stringify(req.body);
-    const inputJSON = req.body.bodyParser();
+    const inputJSON = req.body;
     console.log(inputJSON)
 
     //console.log("\n" + inputJSON + "\n");
