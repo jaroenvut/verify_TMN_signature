@@ -4,8 +4,8 @@ const fs = require('fs');
 const crypto = require('crypto');
 
 const app = express();
-//app.use(bodyParser.json());
-app.use(express.raw({type:'application/json'}));
+app.use(bodyParser.json());
+//app.use(express.raw({type:'application/json'}));
 
 app.post('/', (req, res) => {
     console.log('Print All Headers');
@@ -15,22 +15,24 @@ app.post('/', (req, res) => {
 
     // Loop through headers
     Object.entries(req.headers).forEach(([name, value]) => {
-        console.log(`${name}: ${value}`);
+        //console.log(`${name}: ${value}`);
         temp += `${name}: ${value}\n`;
 
         if (name.toLowerCase() === 'timestamp') {
             timestamp = value;
+            console.log(timestamp)
         }
         if (name.toLowerCase() === 'content-signature') {
             signature = value;
+            console.log(signature)
         }
     });
 
     console.log("<b>Test Merchant Notification</b>");
     const inputJSON = JSON.stringify(req.body);
 
-    console.log("\n" + inputJSON + "\n");
-    console.log("\n<pre>" + inputJSON + "</pre>");
+    //console.log("\n" + inputJSON + "\n");
+    //console.log("\n<pre>" + inputJSON + "</pre>");
 
     fs.writeFileSync('test.txt', `${temp}\n----------------------------------------\nBody\n----------------------------------------\n|${inputJSON}|`);
 
