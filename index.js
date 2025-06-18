@@ -30,7 +30,7 @@ app.post('/', (req, res) => {
 
     console.log("<b>Test Merchant Notification</b>");
     //const inputJSON = JSON.stringify(req.body);
-    const inputJSON = req.body;
+    const inputJSON = req.body.bodyParser();
     console.log(inputJSON)
 
     //console.log("\n" + inputJSON + "\n");
@@ -51,7 +51,7 @@ rtD9nKk3hmSjMealJCVjj5DJB8aH+CfR+fv0rW+t5JO8Ra5z2sG9kLA/0aX3ePMk
 /wIDAQAB
 -----END PUBLIC KEY-----`;
 
-        const textData = timestamp + payload;
+        const textData = timestamp + payload + "";
         const signatureParts = signature.split('data=');
         const providedSignature = signatureParts[1];
 
