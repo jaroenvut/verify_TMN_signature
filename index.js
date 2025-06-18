@@ -4,7 +4,8 @@ const fs = require('fs');
 const crypto = require('crypto');
 
 const app = express();
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
+app.use(express.raw({type:'application/json'}));
 
 app.post('/', (req, res) => {
     console.log('Print All Headers');
