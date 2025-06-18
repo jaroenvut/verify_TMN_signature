@@ -30,6 +30,8 @@ app.post('/', (req, res) => {
 
     console.log("<b>Test Merchant Notification</b>");
     const inputJSON = JSON.stringify(req.body);
+    //const inputJSON = req.body;
+    console.log(inputJSON)
 
     //console.log("\n" + inputJSON + "\n");
     //console.log("\n<pre>" + inputJSON + "</pre>");
@@ -37,7 +39,8 @@ app.post('/', (req, res) => {
     fs.writeFileSync('test.txt', `${temp}\n----------------------------------------\nBody\n----------------------------------------\n|${inputJSON}|`);
 
     // Verify Signature Function
-    function verifySignature(timestamp, datas, signature) {
+    //function verifySignature(timestamp, datas, signature) {
+    function verifySignature(timestamp, payload, signature) {
         const publicKey = `-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs/pJ8qlcSeBKCGLIuEDx
 68AlwS4dEDyahG8gBdLjih2ACXM3CKGH9mriDTn6Mx9cIm3VdXDF6muDlQpCmAzL
@@ -48,7 +51,7 @@ rtD9nKk3hmSjMealJCVjj5DJB8aH+CfR+fv0rW+t5JO8Ra5z2sG9kLA/0aX3ePMk
 /wIDAQAB
 -----END PUBLIC KEY-----`;
 
-        const textData = timestamp + datas;
+        const textData = timestamp + payload;
         const signatureParts = signature.split('data=');
         const providedSignature = signatureParts[1];
 
