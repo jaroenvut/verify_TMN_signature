@@ -125,8 +125,7 @@ rtD9nKk3hmSjMealJCVjj5DJB8aH+CfR+fv0rW+t5JO8Ra5z2sG9kLA/0aX3ePMk
 });
 
 // Start the server
-//const PORT = 3000;
-let PORT = 3000;
+const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
